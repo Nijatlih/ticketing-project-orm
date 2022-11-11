@@ -15,6 +15,7 @@ public class RoleDtoConverter implements Converter<String, RoleDTO> {
     RoleService roleService;
 
     //injection
+    //@Lazy annotation for avoid loops
     public RoleDtoConverter(@Lazy RoleService roleService) {
 
         this.roleService = roleService;
