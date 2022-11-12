@@ -3,6 +3,7 @@ package com.cydeo.entity;
 import com.cydeo.enums.Gender;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "users")
-
+@Where(clause = "is_deleted=false") //add all queries where is_deleted=false
 public class User extends BaseEntity {
 
     private String firstName;
