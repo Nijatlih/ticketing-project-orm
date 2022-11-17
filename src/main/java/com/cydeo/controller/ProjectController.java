@@ -65,33 +65,33 @@ public class ProjectController {
 
 
 
-//    @GetMapping("/update/{projectcode}")
-//    public String editProject(@PathVariable("projectcode") String projectcode, Model model) {
-//
-//        model.addAttribute("project", projectService.getByProjectCode(projectcode));
-//        model.addAttribute("projects", projectService.listAllProjectDetails());
-//        model.addAttribute("managers", userService.listAllByRole("manager"));
-//
-//        return "/project/update";
-//
-//    }
-//
-//    @PostMapping("/update")
-//    public String updateProject(@ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
-//
-//        if (bindingResult.hasErrors()) {
-//
-//            model.addAttribute("projects", projectService.listAllProjectDetails());
-//            model.addAttribute("managers", userService.listAllByRole("manager"));
-//
-//            return "/project/update";
-//
-//        }
-//
-//        projectService.update(project);
-//        return "redirect:/project/create";
-//
-//    }
+    @GetMapping("/update/{projectcode}")
+    public String editProject(@PathVariable("projectcode") String projectcode, Model model) {
+
+        model.addAttribute("project", projectService.getByProjectCode(projectcode));
+        model.addAttribute("projects", projectService.listAllProjects());
+        model.addAttribute("managers", userService.listAllByRole("manager"));
+
+        return "/project/update";
+
+    }
+
+    @PostMapping("/update")
+    public String updateProject(@ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+
+            model.addAttribute("projects", projectService.listAllProjects());
+            model.addAttribute("managers", userService.listAllByRole("manager"));
+
+            return "/project/update";
+
+        }
+
+        projectService.update(project);
+        return "redirect:/project/create";
+
+    }
 //
 //
 //    @GetMapping("/manager/project-status")
